@@ -160,42 +160,50 @@ enable_testing()
 
 add_test(
     NAME eth_in 
-    COMMAND $<TARGET_FILE:eth_in> ${CMAKE_CURRENT_LIST_DIR}/testing/data/eth_in
+    COMMAND $<TARGET_FILE:eth_in> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/eth_in
 )
 
 add_test(
     NAME eth_out
-    COMMAND $<TARGET_FILE:eth_out> ${CMAKE_CURRENT_LIST_DIR}/testing/data/eth_out
+    COMMAND $<TARGET_FILE:eth_out> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/eth_out
 )
 
 add_test(
     NAME arp_test
-    COMMAND $<TARGET_FILE:arp_test> ${CMAKE_CURRENT_LIST_DIR}/testing/data/arp_test
+    COMMAND $<TARGET_FILE:arp_test> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/arp_test
 )
 
 add_test(
     NAME ip_test
-    COMMAND $<TARGET_FILE:ip_test> ${CMAKE_CURRENT_LIST_DIR}/testing/data/ip_test
+    COMMAND $<TARGET_FILE:ip_test> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/ip_test
 )
 
 add_test(
     NAME ip_frag_test
-    COMMAND $<TARGET_FILE:ip_frag_test> ${CMAKE_CURRENT_LIST_DIR}/testing/data/ip_frag_test
+    COMMAND $<TARGET_FILE:ip_frag_test> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/ip_frag_test
 )
 
 add_test(
     NAME icmp_test
-    COMMAND $<TARGET_FILE:icmp_test> ${CMAKE_CURRENT_LIST_DIR}/testing/data/icmp_test
+    COMMAND $<TARGET_FILE:icmp_test> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/icmp_test
 )
 
 add_test(
     NAME udp_test
-    COMMAND $<TARGET_FILE:udp_test> ${CMAKE_CURRENT_LIST_DIR}/testing/data/udp_test
+    COMMAND $<TARGET_FILE:udp_test> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/udp_test
 )
 
 add_test(
     NAME tcp_test
-    COMMAND $<TARGET_FILE:tcp_test> ${CMAKE_CURRENT_LIST_DIR}/testing/data/tcp_test
+    COMMAND $<TARGET_FILE:tcp_test> .
+    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/testing/data/tcp_test
 )
 
 message("Executable files is in ${EXECUTABLE_OUTPUT_PATH}.")

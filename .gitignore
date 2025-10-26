@@ -2,3 +2,8 @@
 /.vscode
 log
 out.pcap
+
+/.helix
+/.cache
+/include/config
+/Testing/Temporary
