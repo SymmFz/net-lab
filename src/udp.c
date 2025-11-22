@@ -7,9 +7,6 @@
 #include "net.h"
 #include "utils.h"
 
-#include <netinet/in.h>
-#include <stdint.h>
-
 /**
  * @brief udp处理程序表
  *
