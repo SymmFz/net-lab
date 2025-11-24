@@ -7,9 +7,6 @@
 #include "net.h"
 #include "utils.h"
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
 /**
  * @brief 初始的arp包
  *
@@ -62,11 +59,9 @@ void arp_print() {
  * @param target_ip 想要知道的目标的ip地址
  */
 void arp_req(uint8_t *target_ip) {
-    // TO-DO
     // Step1 初始化缓冲区
     buf_t txbuf;
     if (buf_init(&txbuf, sizeof(arp_pkt_t)) != 0) {
-        fprintf(stderr, "Error in arp_req: buf init failed.");
         return;
     }
 
@@ -96,11 +91,9 @@ void arp_req(uint8_t *target_ip) {
  * @param target_mac 目标mac地址
  */
 void arp_resp(uint8_t *target_ip, uint8_t *target_mac) {
-    // TO-DO
     // Step1 初始化缓冲区
     buf_t txbuf;
     if (buf_init(&txbuf, sizeof(arp_pkt_t)) != 0) {
-        fprintf(stderr, "Error in arp_req: buf init failed.");
         return;
     }
 
@@ -129,7 +122,6 @@ void arp_resp(uint8_t *target_ip, uint8_t *target_mac) {
  * @param src_mac 源mac地址
  */
 void arp_in(buf_t *buf, uint8_t *src_mac) {
-    // TO-DO
     // Step1 检查数据长度
     if (buf->len < sizeof(arp_pkt_t)) {
         return;
@@ -167,8 +159,6 @@ void arp_in(buf_t *buf, uint8_t *src_mac) {
  * @param ip 目标ip地址
  */
 void arp_out(buf_t *buf, uint8_t *ip) {
-    // TO-DO
-
     // Step1 查找 ARP 表
     uint8_t *target_mac = map_get(&arp_table, ip);
     if (target_mac != NULL) {

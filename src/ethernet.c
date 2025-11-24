@@ -4,12 +4,8 @@
 #include "buf.h"
 #include "config.h"
 #include "driver.h"
-#include "ip.h"
 #include "net.h"
 #include "utils.h"
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
 
 /**
  * @brief 处理一个收到的数据包
@@ -17,7 +13,6 @@
  * @param buf 要处理的数据包
  */
 void ethernet_in(buf_t *buf) {
-    // TO-DO
     // Step1 数据长度检查
     if (buf->len < sizeof(ether_hdr_t)) {
         return;
@@ -35,7 +30,6 @@ void ethernet_in(buf_t *buf) {
 
     // Step2 移除以太网包头
     if (buf_remove_header(buf, sizeof(ether_hdr_t)) != 0) {
-        fprintf(stderr, "Error in ethernet_in: buf remove ethernet header failed.");
         return;
     }
 
@@ -50,18 +44,15 @@ void ethernet_in(buf_t *buf) {
  * @param protocol 上层协议
  */
 void ethernet_out(buf_t *buf, const uint8_t *mac, net_protocol_t protocol) {
-    // TO-DO
     // Step1 数据长度检查与填充
     if (buf->len < ETHERNET_MIN_TRANSPORT_UNIT) {
         if (buf_add_padding(buf, ETHERNET_MIN_TRANSPORT_UNIT- buf->len) != 0) {
-            fprintf(stderr, "Error in ethernet_out: buf add padding failed.");
             return;
         }
     }
 
     // Step2 添加以太网包头
     if (buf_add_header(buf, sizeof(ether_hdr_t)) != 0) {
-        fprintf(stderr, "Error in ethernet_out: buf add header failed.");
         return;
     }
     ether_hdr_t *hdr = (ether_hdr_t *)buf->data;

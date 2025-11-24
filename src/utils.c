@@ -1,13 +1,8 @@
 #include "utils.h"
 
 #include "buf.h"
-#include "ip.h"
 #include "net.h"
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
 /**
  * @brief ip转字符串
  *

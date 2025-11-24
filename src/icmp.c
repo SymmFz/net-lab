@@ -4,8 +4,6 @@
 #include "ip.h"
 #include "net.h"
 #include "utils.h"
-#include <stdint.h>
-#include <string.h>
 
 /**
  * @brief 发送icmp响应

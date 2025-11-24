@@ -7,11 +7,6 @@
 #include "net.h"
 #include "utils.h"
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-
 /**
  * @brief 处理一个收到的数据包
  *
@@ -67,7 +62,6 @@ void ip_in(buf_t *buf, uint8_t *src_mac) {
  * @param mf 分片mf标志，是否有下一个分片
  */
 void ip_fragment_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol, int id, uint16_t offset, int mf) {
-    // TO-DO
     if (buf_add_header(buf, sizeof(ip_hdr_t)) != 0) {
         return;
     }
@@ -110,7 +104,6 @@ static int id_generator() {
  * @param protocol 上层协议
  */
 void ip_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol) {
-    // TO-DO
     uint16_t ip_header_len = sizeof(ip_hdr_t);
     uint16_t max_payload_len = ETHERNET_MAX_TRANSPORT_UNIT - ip_header_len;  // 1480
 
@@ -126,7 +119,6 @@ void ip_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol) {
         int id = id_generator();
 
         while (remaining_len > 0) {
-            // TODO: init buf
             buf_t fragment_buf;
 
             uint16_t current_frag_len = (remaining_len > fragment_data_size) ? fragment_data_size : remaining_len;
