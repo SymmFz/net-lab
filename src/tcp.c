@@ -286,9 +286,7 @@ void tcp_in(buf_t *buf, uint8_t *src_ip) {
     tcp_out(tcp_conn, &txbuf, host_port, remote_ip, remote_port, send_flags);
 
     // TODO: 更新序列号
-    tcp_hdr_t *tcp_hdr_tx = (tcp_hdr_t *)txbuf.data;
-    uint32_t tcp_hdr_tx_sz = (tcp_hdr_tx->doff >> 4) * 4;
-    tcp_conn->seq += bytes_in_flight(txbuf.len - tcp_hdr_tx_sz, send_flags);
+    tcp_conn->seq += bytes_in_flight(0, send_flags);
     /* =============================== TODO 2 END =============================== */
 }
 
