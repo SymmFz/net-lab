@@ -17,4 +17,4 @@ sudo ip netns exec ns_test bash -c "
 "
 
 echo "Run:"
-echo "sudo ip netns exec ns_test socat -x - UDP4:192.168.100.2:60000"
+echo "sudo ip netns exec ns_test socat -x - TCP4:192.168.100.2:60000"
